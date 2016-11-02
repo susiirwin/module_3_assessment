@@ -32,8 +32,21 @@ describe " api" do
 
     expect(response).to be_success
     expect(response.status).to eq(204)
+    expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect(Item.count).to eq(0)
+  end
+
+  it "creates a new item with params" do
+    item_params = { name: "Kite", description: "It flies!", image_url: "http://www.google.com/images" }
+
     expect(Item.count).to eq(0)
 
+    post '/api/v1/items.json', params: {item: item_params}
+    item = JSON.parse(response.body)
+
+    expect(response.to be_success)
+    expect(item.count).to eq(1)
+    expect(response.status).to eq(200)
   end
 end
 
