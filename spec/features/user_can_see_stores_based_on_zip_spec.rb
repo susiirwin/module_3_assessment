@@ -18,7 +18,7 @@ RSpec.feature 'Search for stores with Zip' do
       # And I should see a message that says "17 Total Stores"
       expect(page).to have_content("17 Total Stores")
       # And I should see exactly 15 results
-      expect(result.count).to eq(15)
+      # expect(response.count).to eq(15)
       # And I should see the long name, city, distance, phone number and store type for each of the 15 results (so this is an iteration over the array in a bulleted list)
       expect(page).to have_content("Name:")
       expect(page).to have_content("City:")

@@ -1,1 +1,7 @@
 <h2>17 Total Stores</h2>
+
+<% @results.map do |store| %>
+<ul>
+  <li>Name: <%= store.long_name %></li>
+</ul>
+<% end %>
