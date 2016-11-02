@@ -18,8 +18,10 @@ describe " api" do
     item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(item["name"]).to eq(item.name)
+    expect(item["name"]).to eq("Piggy Bank")
   end
+
+  
 end
 
 
