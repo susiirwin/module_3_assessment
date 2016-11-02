@@ -1,6 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
   def create
-    require 'pry'; binding.pry
     render json: Item.create(item_params)
   end
 
