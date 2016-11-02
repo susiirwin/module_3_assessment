@@ -8,6 +8,7 @@ describe " api" do
     items = JSON.parse(response.body)
 
     expect(response).to be_success
+    expect(response.status).to eq(200)
     expect(items.count).to eq(2)
   end
 
@@ -18,10 +19,22 @@ describe " api" do
     item = JSON.parse(response.body)
 
     expect(response).to be_success
+    expect(response.status).to eq(200)
     expect(item["name"]).to eq("Piggy Bank")
   end
 
-  
+  it "deletes the specified item based on id" do
+    item = FactoryGirl.create(:item)
+
+    expect(Item.count).to eq(1)
+
+    delete "/api/v1/items/#{item.id}.json"
+
+    expect(response).to be_success
+    expect(response.status).to eq(204)
+    expect(Item.count).to eq(0)
+
+  end
 end
 
 
@@ -32,6 +45,6 @@ end
 #
 # When I send a DELETE request to /api/v1/items/1 I receive a 204 JSON response if the record is successfully deleted
 #
-# When I send a POST request to /api/v1/items with a name, description, and image_url I receive a 201 JSON response if the record is successfully created And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
+# CREATE When I send a POST request to /api/v1/items with a name, description, and image_url I receive a 201 JSON response if the record is successfully created And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
 #
 # Verify that your API works using Postman or curl
