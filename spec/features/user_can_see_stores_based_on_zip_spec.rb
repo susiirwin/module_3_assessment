@@ -6,7 +6,7 @@ RSpec.feature 'Search for stores with Zip' do
 
       visit '/'
 
-      fill_in "search_index", with: "80202"
+      fill_in "q", with: "80202"
 
       click_on "Search"
 
