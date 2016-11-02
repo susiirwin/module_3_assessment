@@ -8,7 +8,7 @@ RSpec.feature 'Search for stores with Zip' do
       # When I visit "/"
       visit '/'
       # And I fill in a search box with "80202" and click "search"
-      fill_in "Search", with: "80202"
+      fill_in "search_index", with: "80202"
 
       click_on "Search"
       # Then my current path should be "/search" (ignoring params)
@@ -18,7 +18,7 @@ RSpec.feature 'Search for stores with Zip' do
       # And I should see a message that says "17 Total Stores"
       expect(page).to have_content("17 Total Stores")
       # And I should see exactly 15 results
-      expect(Store.count).to eq(15)
+      expect(result.count).to eq(15)
       # And I should see the long name, city, distance, phone number and store type for each of the 15 results (so this is an iteration over the array in a bulleted list)
       expect(page).to have_content("Name:")
       expect(page).to have_content("City:")
