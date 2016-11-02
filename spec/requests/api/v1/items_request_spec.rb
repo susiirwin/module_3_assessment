@@ -14,7 +14,11 @@ describe " api" do
   it "returns a single item based on id" do
     item = FactoryGirl.create(:item)
 
-    get '/api/v1/items.json'
+    get "/api/v1/items/#{item.id}.json"
+    item = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(item["name"]).to eq(item.name)
   end
 end
 
