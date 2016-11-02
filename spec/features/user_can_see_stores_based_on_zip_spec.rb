@@ -8,9 +8,9 @@ RSpec.feature 'Search for stores with Zip' do
       # When I visit "/"
       visit '/'
       # And I fill in a search box with "80202" and click "search"
-      fill_in ____ with "80202"
+      fill_in "Search", with: "80202"
 
-      click_on "search"
+      click_on "Search"
       # Then my current path should be "/search" (ignoring params)
       expect(current_path).to eq('/search')
       # And I should see stores within 25 miles of 80202
