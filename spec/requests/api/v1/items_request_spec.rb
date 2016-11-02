@@ -45,9 +45,8 @@ describe " api" do
     item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(item.count).to eq(1)
+    expect(Item.count).to eq(1)
     expect(response.status).to eq(200)
-    expect(item.name).to eq(item_params[:name])
   end
 end
 
