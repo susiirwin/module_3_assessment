@@ -1,11 +1,11 @@
 <h2>17 Total Stores</h2>
 
 <% @results.map do |store| %>
-<ul class="store">
-  <li class="fullname">Name: <%= store.long_name %></li>
-  <li>City: <%= store.city %></li>
-  <li>Distance: <%= store.distance %></li>
-  <li>Phone: <%= store.phone_number %></li>
-  <li>Store Type: <%= store.store_type %></li>
-</ul>
+  <ul class="store">
+    <li class="fullname">Name: <%= store.long_name %></li>
+    <li class="city">City: <%= store.city %></li>
+    <li class="distance">Distance: <%= store.distance %></li>
+    <li class="phone">Phone: <%= store.phone_number %></li>
+    <li class="store_type">Store Type: <%= store.store_type %></li>
+  </ul>
 <% end %>

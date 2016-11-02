@@ -19,17 +19,23 @@ RSpec.feature 'Search for stores with Zip' do
       expect(page).to have_content("17 Total Stores")
       # And I should see exactly 15 results
       expect(page).to have_selector('.fullname', count: 15)
-      # And I should see the long name, city, distance, phone number and store type for each of the 15 results (so this is an iteration over the array in a bulleted list)
-      within first ".store" do
-        find('.fullname').text.should match("Best Buy Mobile - Cherry Creek Shopping Center")
+      # And I should see the long name, city, distance, phone number and store type for each of the 15 results
+      page.first(:css, '.fullname').to have_content("Name: Best Buy Mobile - Cherry Creek Shopping Center")
+
+      # need to see if the first entry in the list has thesr things"
+      page.all(:css, '.store').each do |li|
+        expect(page).to have_content("Name")
+        expect(page).to have_content("City")
+        expect(page).to have_content("Distance")
+        expect(page).to have_content("Phone Number")
+        expect(page).to have_content("Store Type")
       end
 
-      expect(page).to have_content("Name:")
-      expect(page).to have_content("City:")
-      expect(page).to have_content("Distance:")
-      expect(page).to have_content("Phone Number:")
-      expect(page).to have_content("Store Type:")
 
+      # expect(page).to have_content("Distance: 3.25")
+      # expect(page).to have_content("City: Denver")
+      # expect(page).to have_content("Phone Number: 303-270-9189")
+      # expect(page).to have_content("Store Type: Mobile")
 
     end
   end
